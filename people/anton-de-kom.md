@@ -13,7 +13,7 @@
 
 ## Known For
 - Anton de Kom was a Surinamese anti-colonial author and resistance fighter who wrote the influential book "Wij slaven van Suriname" ("We Slaves of Surinam"), exposing the brutalities of colonial exploitation.
--He became a symbol of resistance against oppression, ultimately dying in a Nazi concentration camp while fighting with the Dutch resistance during World War II.
+- He became a symbol of resistance against oppression, ultimately dying in a Nazi concentration camp while fighting with the Dutch resistance during World War II.
 
 ## Impact (to society and latino community)
 - Pioneered anti-colonial literature in Suriname and the Caribbean, inspiring later generations of independence movements throughout Latin America and the Caribbean
