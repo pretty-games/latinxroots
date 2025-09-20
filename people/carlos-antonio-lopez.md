@@ -5,19 +5,20 @@
 
 ## Info
 - **Full Name:** Carlos Antonio López
-- **Born Location:** {City, State, Country}
+- **Born Location:** Asunción, Paraguay
 - **Birth Date:** 1792
 - **Death Date:** 1862
-- **Origin:** {Heritage}  
-- **Tags:**: [{value}, {value}, {value}]
+- **Origin:** Paraguayan  
+- **Tags:** [President, Modernizer, Constitution-maker]
 
 ## Known For
-- President who modernized Paraguay, promoted education, built infrastructure, and maintained the country's sovereignty during a difficult period
+- First constitutional President of Paraguay who modernized the country after decades of isolation.
+- Established Paraguay's first constitution, promoted education, and developed infrastructure while maintaining national sovereignty.
 
 ## Impact (to society and latino community)
-- {value}
-- {value}
+- Transformed Paraguay from an isolated nation into a modernized state with constitutional government and expanded international relations.
+- Promoted economic development through industrial initiatives, infrastructure projects, and commercial treaties that benefited Latin American trade.
+- Advanced education and literacy in Paraguay, laying foundations for future social and political development in the region.
 
 ## Sources
-- {[description](link)}
-- {[description](link)}
+- [Wikipedia - Carlos Antonio López](https://en.wikipedia.org/wiki/Carlos_Antonio_L%C3%B3pez)
