@@ -4,20 +4,21 @@
 ![image description](images/person-image-template.png)
 
 ## Info
-- **Full Name:** Benito Juárez
-- **Born Location:** {City, State, Country}
-- **Birth Date:** 1806
-- **Death Date:** 1872
-- **Origin:** {Heritage}  
-- **Tags:**: [{value}, {value}, {value}]
+- **Full Name:** Benito Pablo Juárez García
+- **Born Location:** San Pablo Guelatao, Oaxaca, Mexico
+- **Birth Date:** March 21, 1806
+- **Death Date:** July 18, 1872
+- **Origin:** Zapotec Indigenous  
+- **Tags:** [President, Liberal Reformer, Indigenous Leader]
 
 ## Known For
-- Indigenous president who championed liberal reforms, separated church and state, and successfully resisted French intervention while promoting constitutional government
+- First Indigenous president of Mexico who led the Liberal Party to victory in the Reform War and implemented constitutional reforms known as La Reforma.
+- Successfully defended Mexican sovereignty against French intervention and established religious freedom, civil rights, and separation of church and state.
 
 ## Impact (to society and latino community)
-- {value}
-- {value}
+- Transformed Mexico's political landscape by establishing equality before the law and championing democratic principles, becoming the most popular Mexican president of the 19th century.
+- Pioneered Indigenous political leadership in Latin America, proving that Indigenous people could lead nations and implement progressive reforms.
+- His legacy of defending national sovereignty and constitutional government became a model for democratic movements throughout Latin America.
 
 ## Sources
-- {[description](link)}
-- {[description](link)}
+- [Wikipedia: Benito Juárez](https://en.wikipedia.org/wiki/Benito_Ju%C3%A1rez)
