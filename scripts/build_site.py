@@ -41,7 +41,7 @@ def generate_json_files(markdown_files: list[Path], validation_rules: dict, outp
             with open(json_path, 'w', encoding='utf-8') as f:
                 json.dump(data, f, indent=2, ensure_ascii=False)
 
-            json_files.append(f"people/{json_filename}")
+            json_files.append(json_filename)
             print(f"  -> Generated {json_filename}")
 
         except Exception as e:
