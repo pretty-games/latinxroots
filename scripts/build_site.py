@@ -68,7 +68,7 @@ def copy_images(source_dir: Path, output_dir: Path):
 
 def generate_list_file(json_files: list[str], output_dir: Path):
     """Generate the list.json file with all available JSON files."""
-    list_path = output_dir / "list.json"
+    list_path = output_dir / "people" / "list.json"
     with open(list_path, 'w', encoding='utf-8') as f:
         json.dump(sorted(json_files), f, indent=2)
     print(f"Generated list.json with {len(json_files)} files")

@@ -67,8 +67,8 @@ def check_output_readiness():
         print("WARNING: docs directory doesn't exist yet (will be created during build)")
         return True
 
-    list_json = docs_dir / "list.json"
     people_dir = docs_dir / "people"
+    list_json = people_dir / "list.json"
 
     if list_json.exists():
         print(f"[OK] Found list.json")
