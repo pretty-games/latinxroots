@@ -13,7 +13,7 @@ from markdown_parser import get_markdown_files
 
 def initialize_script(require_people_dir: bool = True, require_schema: bool = True) -> tuple[Path, Dict[str, Any], List[Path]]:
     """Initialize common script requirements."""
-    people_dir = Path("people")
+    people_dir = Path("src/people")
     validation_rules = None
     markdown_files = []
 
@@ -31,7 +31,7 @@ def initialize_script(require_people_dir: bool = True, require_schema: bool = Tr
     if require_schema:
         try:
             validation_rules = load_people_schema("1.0")
-            print(f"Loaded validation rules from schema/PEOPLE_1.0.md")
+            print(f"Loaded validation rules from src/schema/PEOPLE_1.0.md")
         except FileNotFoundError as e:
             print(f"ERROR: {e}")
             sys.exit(1)

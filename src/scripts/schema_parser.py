@@ -120,7 +120,7 @@ def parse_template_validation_rules(template_path: Path) -> Dict[str, Any]:
 
 def get_schema_path(object_type: str, version: str) -> Path:
     """Get the path to a schema file."""
-    return Path("schema") / f"{object_type}_{version}.md"
+    return Path("src/schema") / f"{object_type}_{version}.md"
 
 
 def load_people_schema(version: str = "1.0") -> Dict[str, Any]:

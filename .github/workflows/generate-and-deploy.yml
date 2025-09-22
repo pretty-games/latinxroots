@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'people/**'
+      - 'src/people/**'
   workflow_dispatch:
 
 permissions:
@@ -34,7 +34,7 @@ jobs:
     
     - name: Build site (validate and generate JSON files)
       run: |
-        python scripts/build_site.py
+        python src/scripts/build_site.py
       # This step will fail the workflow if validation errors are found
     
     - name: Setup Pages
