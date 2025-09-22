@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation - LatinX Roots</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .api-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .endpoint {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            border-left: 4px solid #667eea;
+        }
+        .endpoint-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        .endpoint-url {
+            background: #2c3e50;
+            color: white;
+            padding: 0.75rem;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+            word-break: break-all;
+        }
+        .code-block {
+            background: #f1f3f4;
+            padding: 1rem;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            margin: 1rem 0;
+        }
+        .response-example {
+            background: #e8f5e8;
+            border-left: 4px solid #28a745;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>LatinX Roots</h1>
+        <nav>
+            <a href="index.html">People</a>
+            <a href="stats.html">Statistics</a>
+            <a href="api.html">API</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="api-container">
+            <h2 style="text-align: center; color: #2c3e50; margin-bottom: 2rem;">API Documentation</h2>
+
+            <p>The LatinX Roots website provides a simple JSON API to access information about historical Latin American and Caribbean figures. All data is available through HTTP GET requests with no authentication required.</p>
+
+            <h3 style="color: #2c3e50; margin-top: 2rem;">Base URL</h3>
+            <div class="endpoint-url">https://pretty-games.github.io/latinxroots/</div>
+
+            <div class="endpoint">
+                <div class="endpoint-title">Get List of People</div>
+                <p>Returns an array of JSON filenames for all available people in the database.</p>
+
+                <div class="endpoint-url">GET /people/list.json</div>
+
+                <h4>Response Example:</h4>
+                <div class="code-block response-example">[
+  "aime-cesaire.json",
+  "anton-de-kom.json",
+  "augusto-cesar-sandino.json",
+  "benito-juarez.json",
+  "carlos-antonio-lopez.json",
+  "cheddi-jagan.json",
+  ...
+]</div>
+            </div>
+
+            <div class="endpoint">
+                <div class="endpoint-title">Get Person Details</div>
+                <p>Returns detailed information about a specific person using their filename from the list endpoint.</p>
+
+                <div class="endpoint-url">GET /people/{filename}</div>
+
+                <h4>Parameters:</h4>
+                <ul>
+                    <li><strong>filename</strong> - The JSON filename from the list endpoint (e.g., "anton-de-kom.json")</li>
+                </ul>
+
+                <h4>Response Example:</h4>
+                <div class="code-block response-example">{
+  "schemaVersion": "1.0",
+  "preferredName": "Anton de Kom",
+  "image": "people/images/person-image-template.png",
+  "info": {
+    "fullname": "Cornelis Gerhard Anton de Kom",
+    "bornlocation": "Paramaribo, Suriname",
+    "birthdate": "1898-02-22",
+    "deathdate": "1945-04-24",
+    "origin": "Surinamese",
+    "tags": [
+      "resistance fighter",
+      "anti-colonial",
+      "author",
+      "activist"
+    ]
+  },
+  "knownFor": [
+    "Anton de Kom was a Surinamese anti-colonial author..."
+  ],
+  "impact": [
+    "Pioneered anti-colonial literature in Suriname..."
+  ],
+  "sources": [
+    {
+      "description": "Wikipedia: Anton de Kom",
+      "url": "https://en.wikipedia.org/wiki/Anton_de_Kom"
+    }
+  ]
+}</div>
+            </div>
+
+            <div class="endpoint">
+                <div class="endpoint-title">Access Person Images</div>
+                <p>Person images are available through the image path specified in each person's JSON data.</p>
+
+                <div class="endpoint-url">GET /{image_path}</div>
+
+                <h4>Example:</h4>
+                <div class="endpoint-url">GET /people/images/person-image-template.png</div>
+
+                <p>The image path is found in the <code>image</code> field of each person's JSON response.</p>
+            </div>
+
+            <h3 style="color: #2c3e50; margin-top: 2rem;">Usage Examples</h3>
+
+            <h4>JavaScript Example:</h4>
+            <div class="code-block">// Fetch list of all people
+fetch('https://pretty-games.github.io/latinxroots/people/list.json')
+  .then(response => response.json())
+  .then(peopleList => {
+    console.log('Available people:', peopleList);
+
+    // Fetch details for the first person
+    return fetch(`https://pretty-games.github.io/latinxroots/people/${peopleList[0]}`);
+  })
+  .then(response => response.json())
+  .then(person => {
+    console.log('Person details:', person);
+    console.log('Image URL:', `https://pretty-games.github.io/latinxroots/${person.image}`);
+  })
+  .catch(error => console.error('Error:', error));</div>
+
+            <h4>Python Example:</h4>
+            <div class="code-block">import requests
+
+# Fetch list of people
+response = requests.get('https://pretty-games.github.io/latinxroots/people/list.json')
+people_list = response.json()
+
+print(f"Found {len(people_list)} people")
+
+# Fetch details for each person
+for filename in people_list:
+    person_response = requests.get(f'https://pretty-games.github.io/latinxroots/people/{filename}')
+    person = person_response.json()
+
+    print(f"Name: {person['preferredName']}")
+    print(f"Origin: {person['info']['origin']}")
+    print(f"Tags: {', '.join(person['info']['tags'])}")
+    print(f"Image: https://pretty-games.github.io/latinxroots/{person['image']}")
+    print("---")</div>
+
+            <h3 style="color: #2c3e50; margin-top: 2rem;">Data Schema</h3>
+            <p>Each person JSON object contains the following fields:</p>
+            <ul>
+                <li><strong>schemaVersion</strong>: Version of the data schema</li>
+                <li><strong>preferredName</strong>: The name most commonly used to refer to this person</li>
+                <li><strong>image</strong>: Relative path to the person's image</li>
+                <li><strong>info</strong>: Basic biographical information
+                    <ul>
+                        <li><strong>fullname</strong>: Complete legal name</li>
+                        <li><strong>bornlocation</strong>: Place of birth</li>
+                        <li><strong>birthdate</strong>: Date of birth (YYYY-MM-DD format)</li>
+                        <li><strong>deathdate</strong>: Date of death (YYYY-MM-DD format, if applicable)</li>
+                        <li><strong>origin</strong>: Country or region of origin</li>
+                        <li><strong>tags</strong>: Array of descriptive tags</li>
+                    </ul>
+                </li>
+                <li><strong>knownFor</strong>: Array of descriptions about what this person is known for</li>
+                <li><strong>impact</strong>: Array of descriptions about their impact on society and Latino community</li>
+                <li><strong>sources</strong>: Array of source references with description and URL</li>
+            </ul>
+
+            <h3 style="color: #2c3e50; margin-top: 2rem;">Rate Limits & Usage</h3>
+            <p>This API is hosted on GitHub Pages and has no explicit rate limits, but please be respectful and avoid excessive requests. The data is static and updated only when new people are added to the repository.</p>
+
+            <h3 style="color: #2c3e50; margin-top: 2rem;">Contributing</h3>
+            <p>This is an open-source project. To add new people or modify existing data, please visit our <a href="https://github.com/pretty-games/latinxroots" target="_blank" rel="noopener noreferrer">GitHub repository</a> and submit a pull request.</p>
+        </div>
+    </main>
+</body>
+</html>
