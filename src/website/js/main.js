@@ -224,8 +224,8 @@ function escapeHtml(text) {
 
 // Export functions for use in other scripts
 window.mainApp = {
-    allPeople,
-    displayedPeople,
+    get allPeople() { return allPeople; },
+    get displayedPeople() { return displayedPeople; },
     displayPeople,
     loadPeople
 };

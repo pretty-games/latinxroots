@@ -28,13 +28,21 @@ function debounce(func, wait) {
 function handleSearch() {
     const query = searchInput.value.trim();
 
+    // Check if data is loaded
+    if (!window.mainApp || !window.mainApp.allPeople || window.mainApp.allPeople.length === 0) {
+        console.log('Data not loaded yet, skipping search');
+        return;
+    }
+
     if (!query) {
         // If no search query, show all people
         window.mainApp.displayPeople(window.mainApp.allPeople);
         return;
     }
 
+    console.log('Searching for:', query);
     const filteredPeople = searchPeople(window.mainApp.allPeople, query);
+    console.log('Found:', filteredPeople.length, 'results');
     window.mainApp.displayPeople(filteredPeople);
 }
 
@@ -57,7 +65,9 @@ function searchByField(people, field, value) {
     const isRegex = isValidRegex(value);
     const searchRegex = isRegex ? new RegExp(value, 'i') : null;
 
-    return people.filter(person => {
+    console.log(`Searching field '${field}' for '${value}' (regex: ${isRegex})`);
+
+    const results = people.filter(person => {
         let fieldValue = '';
 
         switch (field) {
@@ -91,15 +101,21 @@ function searchByField(people, field, value) {
                 fieldValue = person.info.deathdate || '';
                 break;
             default:
+                console.log(`Unknown field: ${field}`);
                 return false;
         }
 
-        if (searchRegex) {
-            return searchRegex.test(fieldValue);
-        } else {
-            return fieldValue.toLowerCase().includes(value.toLowerCase());
+        const matches = searchRegex ? searchRegex.test(fieldValue) : fieldValue.toLowerCase().includes(value.toLowerCase());
+
+        if (matches) {
+            console.log(`Match found in ${person.preferredName}: field='${field}', value='${fieldValue}', query='${value}'`);
         }
+
+        return matches;
     });
+
+    console.log(`Field search results: ${results.length} matches`);
+    return results;
 }
 
 // General search across all fields
@@ -108,7 +124,9 @@ function searchGeneral(people, query) {
     const searchRegex = isRegex ? new RegExp(query, 'i') : null;
     const lowerQuery = query.toLowerCase();
 
-    return people.filter(person => {
+    console.log(`General search for '${query}' (regex: ${isRegex})`);
+
+    const results = people.filter(person => {
         // Create a searchable text string from all person data
         const searchableText = [
             person.preferredName,
@@ -122,16 +140,26 @@ function searchGeneral(people, query) {
             ...(person.impact || [])
         ].join(' ').toLowerCase();
 
-        if (searchRegex) {
-            return searchRegex.test(searchableText);
-        } else {
-            return searchableText.includes(lowerQuery);
+        const matches = searchRegex ? searchRegex.test(searchableText) : searchableText.includes(lowerQuery);
+
+        if (matches) {
+            console.log(`General match found in ${person.preferredName}`);
         }
+
+        return matches;
     });
+
+    console.log(`General search results: ${results.length} matches`);
+    return results;
 }
 
 // Check if a string is a valid regex
 function isValidRegex(str) {
+    // Don't treat simple strings as regex
+    if (!/[.*+?^${}()|[\]\\]/.test(str)) {
+        return false;
+    }
+
     try {
         new RegExp(str);
         return true;
