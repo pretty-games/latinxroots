@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LatinX Roots - Historical Figures</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>LatinX Roots</h1>
+        <nav>
+            <a href="index.html">People</a>
+            <a href="stats.html">Statistics</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="search-section">
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search people... (e.g., tags:politician, origin:Mexico, or use regex)">
+                <div class="search-help">
+                    <small>Field search: tags:value, origin:value, bornlocation:value | Regex supported</small>
+                </div>
+            </div>
+        </section>
+
+        <section class="people-grid" id="people-grid">
+            <div class="loading">Loading people...</div>
+        </section>
+    </main>
+
+    <!-- Modal for person details -->
+    <div id="person-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/search.js"></script>
+</body>
+</html>

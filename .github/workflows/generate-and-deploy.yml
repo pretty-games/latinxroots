@@ -5,6 +5,7 @@ on:
     branches: [ main ]
     paths:
       - 'src/people/**'
+      - 'src/website/**'
   workflow_dispatch:
 
 permissions:
@@ -36,6 +37,10 @@ jobs:
       run: |
         python src/scripts/build_site.py
       # This step will fail the workflow if validation errors are found
+
+    - name: Copy website files
+      run: |
+        cp -r src/website/* docs/
     
     - name: Setup Pages
       uses: actions/configure-pages@v4
